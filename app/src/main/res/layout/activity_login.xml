@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/tvPleaseLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please Login!"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/etname"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/tvPleaseLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawablePadding="10dp"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/etpassword"
+        android:layout_below="@+id/etname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="10dp"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_below="@+id/etpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        />
+
+    <TextView
+        android:id="@+id/tvCreateAccount"
+        android:layout_below="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create New Account"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+
+</RelativeLayout>
