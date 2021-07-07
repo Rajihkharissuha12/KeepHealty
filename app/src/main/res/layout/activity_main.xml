@@ -19,7 +19,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp">
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/etMainname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hello"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-black"
+            android:text="name"
+            android:textColor="#fff"
+            android:textSize="26dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/hello"
@@ -27,35 +39,23 @@
             android:layout_height="wrap_content"
             android:text="Hello,"
             android:textColor="#fff"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:id="@+id/etMainname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="name"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-black"
-            android:textSize="26dp"
-            android:layout_below="@id/hello"
-            android:layout_marginTop="10dp"/>
+            android:textSize="20dp" />
 
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/profile"/>
+            android:background="@drawable/profile" />
 
 
     </RelativeLayout>
 
 <!--    Menu-->
     <LinearLayout
-        android:layout_marginTop="150dp"
-        android:layout_width="470dp"
-        android:layout_height="705dp"
+        android:layout_width="match_parent"
+        android:layout_height="555dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
         android:background="@drawable/card_button"
         android:orientation="vertical">
 
@@ -67,7 +67,7 @@
 
             <ImageView
                 android:layout_width="400dp"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/cv1" />
 
@@ -107,7 +107,7 @@
 
             <ImageView
                 android:layout_width="400dp"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:background="@drawable/cv2" />
 
             <ImageView
@@ -147,7 +147,7 @@
 
             <ImageView
                 android:layout_width="400dp"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:background="@drawable/cv3" />
 
             <ImageView
@@ -186,7 +186,7 @@
 
             <ImageView
                 android:layout_width="400dp"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:background="@drawable/cv5" />
 
             <ImageView
@@ -225,7 +225,7 @@
 
             <ImageView
                 android:layout_width="400dp"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:background="@drawable/cv4" />
 
             <ImageView
@@ -264,7 +264,7 @@
 
             <ImageView
                 android:layout_width="400dp"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:background="@drawable/cv1" />
 
             <ImageView
@@ -297,11 +297,20 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="670dp"
+        android:background="#fff"
+        app:menu="@menu/bottom_menu"/>
 
-
-
-
-
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/my_nav" />
 
 
 </RelativeLayout>
