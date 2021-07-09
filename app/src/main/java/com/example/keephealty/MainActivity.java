@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     TextView etname;
     SessionManager sessionManager;
     String name;
-
+    String getId;
+    private static final String BASE_URL = "http://192.168.43.200/applogindanregisterandroid/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .show();
     }
+
+
 
 
 }

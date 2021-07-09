@@ -19,6 +19,7 @@ public class SessionManager {
     public static final String USER_ID = "user_id";
     public static final String NAME = "name";
 
+
     public SessionManager (Context context){
         this._context = context;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -29,6 +30,7 @@ public class SessionManager {
         editor.putBoolean(IS_LOGGED_IN, true);
         editor.putString(USER_ID, user.getUserId());
         editor.putString(NAME, user.getName());
+
         editor.commit();
     }
 

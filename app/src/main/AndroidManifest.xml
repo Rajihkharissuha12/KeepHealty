@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KeepHealty">
+        <activity android:name=".ProfileActivity"></activity>
+
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
