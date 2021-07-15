@@ -34,7 +34,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_mitra" />
+            app:layout_constraintTop_toBottomOf="@+id/img_mitra"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp" />
 
         <TextView
             android:id="@+id/tv_service"
@@ -48,7 +50,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp" />
 
         <TextView
             android:id="@+id/tv_phone"
@@ -62,7 +66,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_service" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_service"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -13,11 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-
-import org.jetbrains.annotations.NotNull;
-
 public class MainActivity extends AppCompatActivity {
 
     TextView etname;
@@ -31,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         sessionManager = new SessionManager(MainActivity.this);
         if (!sessionManager.isLoggedIn()) {
             moveToLogin();
