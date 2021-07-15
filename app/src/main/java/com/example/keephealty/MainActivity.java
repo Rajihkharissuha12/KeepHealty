@@ -3,6 +3,10 @@ package com.example.keephealty;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -18,14 +22,13 @@ public class MainActivity extends AppCompatActivity {
     TextView etname;
     SessionManager sessionManager;
     String name;
-    String getId;
-    private static final String BASE_URL = "http://192.168.43.200/applogindanregisterandroid/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_home);
+
+
 
 
         sessionManager = new SessionManager(MainActivity.this);
@@ -33,13 +36,26 @@ public class MainActivity extends AppCompatActivity {
             moveToLogin();
         }
 
+
         etname = findViewById(R.id.etMainname);
 
         name = sessionManager.getUserDetail().get(SessionManager.NAME);
 
         etname.setText(name);
 
-        
+        //      button navigation
+        setContentView(R.layout.activity_main);
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home,R.id.navigation_dashboard,R.id.navigation_notifications)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController);
+//      end button navigation
+
+
 
     }
 
@@ -54,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
+
+
     }
 
     @Override
@@ -85,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .show();
     }
+
 
 
 
