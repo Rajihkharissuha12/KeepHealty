@@ -28,20 +28,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_home);
 
-
-
-
         sessionManager = new SessionManager(MainActivity.this);
-        if (!sessionManager.isLoggedIn()) {
+        if (!sessionManager.isLoggedIn() == true) {
             moveToLogin();
         }
-
-
-        etname = findViewById(R.id.etMainname);
-
-        name = sessionManager.getUserDetail().get(SessionManager.NAME);
-
-        etname.setText(name);
 
         //      button navigation
         setContentView(R.layout.activity_main);
@@ -51,9 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home,R.id.navigation_dashboard,R.id.navigation_notifications)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-//      end button navigation
+        //      end button navigation
 
 
 
@@ -74,15 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.actionLogout:
-                sessionManager.logoutSession();
-                moveToLogin();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.actionLogout:
+//                sessionManager.logoutSession();
+//                moveToLogin();
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public void onBackPressed(MenuItem item) {
         new AlertDialog.Builder(this)

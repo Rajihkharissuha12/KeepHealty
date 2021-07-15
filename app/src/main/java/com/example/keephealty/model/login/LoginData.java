@@ -5,16 +5,16 @@ import com.google.gson.annotations.SerializedName;
 public class LoginData {
 
 	@SerializedName("user_id")
-	private String userId;
+	private Integer userId;
 
 	@SerializedName("name")
 	private String name;
 
-	public void setUserId(String userId){
+	public void setUserId(Integer userId){
 		this.userId = userId;
 	}
 
-	public String getUserId(){
+	public Integer getUserId(){
 		return userId;
 	}
 
