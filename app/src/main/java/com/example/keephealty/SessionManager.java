@@ -28,15 +28,15 @@ public class SessionManager {
 
     public void createLoginSession(LoginData user){
         editor.putBoolean(IS_LOGGED_IN, true);
-        editor.putString(USER_ID, user.getUserId());
+        editor.putInt(USER_ID, user.getUserId());
         editor.putString(NAME, user.getName());
 
         editor.commit();
     }
 
-    public HashMap<String,String> getUserDetail(){
-        HashMap<String,String> user = new HashMap<>();
-        user.put(USER_ID, sharedPreferences.getString(USER_ID, null));
+    public HashMap getUserDetail(){
+        HashMap user = new HashMap<>();
+        user.put(USER_ID, sharedPreferences.getInt(USER_ID, 0));
         user.put(NAME, sharedPreferences.getString(NAME, null));
         return user;
     }
