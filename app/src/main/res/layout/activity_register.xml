@@ -32,6 +32,7 @@
         android:layout_below="@+id/etRegisterName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
         android:hint="Email"
         android:drawableStart="@drawable/ic_baseline_account_box_24"
         android:drawablePadding="10dp"
@@ -50,6 +51,7 @@
     <EditText
         android:id="@+id/etRegisterNomor"
         android:layout_width="match_parent"
+        android:inputType="number"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etRegisterAlamat"
         android:drawableStart="@drawable/ic_baseline_call_24"

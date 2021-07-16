@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.keephealty.api.ApiClient;
 import com.example.keephealty.api.ApiInterface;
 import com.example.keephealty.model.register.Register;
-import com.ifa.keephealty.api.ApiClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,6 +64,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void register(String username, String password, String email, String alamat, String nomor) {
+
+        if (username.trim().isEmpty() || password.isEmpty() || email.isEmpty() || alamat.isEmpty() || nomor.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Isi semua field!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<Register> call = apiInterface.registerResponse(username, password, email, alamat, nomor);

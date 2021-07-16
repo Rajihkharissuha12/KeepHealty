@@ -2,55 +2,73 @@ package com.example.keephealty;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
+import com.example.keephealty.fragment.HomeFragment;
+import com.example.keephealty.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import org.jetbrains.annotations.NotNull;
-
 public class MainActivity extends AppCompatActivity {
 
-    TextView etname;
     SessionManager sessionManager;
-    String name;
-    String getId;
-    private static final String BASE_URL = "http://192.168.43.200/applogindanregisterandroid/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_mitra);
+
         sessionManager = new SessionManager(MainActivity.this);
         if (!sessionManager.isLoggedIn()) {
             moveToLogin();
         }
 
-        etname = findViewById(R.id.etMainname);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment(), "home").commit();
+        }
 
-        name = sessionManager.getUserDetail().get(SessionManager.NAME);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        if (fragmentManager.findFragmentByTag("home") != null) {
+                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("home")).commit();
+                        } else {
+                            //if the fragment does not exist, add it to fragment manager.
+                            fragmentManager.beginTransaction().add(R.id.fragment_container, new HomeFragment(), "home").commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("profile") != null) {
+                            //if the other fragment is visible, hide it.
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("profile")).commit();
+                        }
+                        break;
+                    case R.id.nav_profile:
+                        if (fragmentManager.findFragmentByTag("profile") != null) {
+                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("profile")).commit();
+                        } else {
+                            //if the fragment does not exist, add it to fragment manager.
+                            fragmentManager.beginTransaction().add(R.id.fragment_container, new ProfileFragment(), "profile").commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("home") != null) {
+                            //if the other fragment is visible, hide it.
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("home")).commit();
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
 
-        etname.setText(name);
-
-        
-
-    }
-
-    private void moveToLogin() {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(intent);
-        finish();
     }
 
     @Override
@@ -69,7 +87,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onBackPressed(MenuItem item) {
+    private void moveToLogin() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setIcon(R.mipmap.ic_launcher)
                 .setTitle(R.string.app_name)
@@ -88,8 +113,4 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .show();
     }
-
-
-
-
 }

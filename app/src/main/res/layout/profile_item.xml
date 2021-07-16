@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    android:layout_margin="8dp"
+    android:elevation="20dp">
+
+    <ImageView
+        android:id="@+id/img_icon_profile"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_nomor" />
+
+    <TextView
+        android:text="08921378127382"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/tv_text_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img_icon_profile"
+        android:layout_toEndOf="@id/img_icon_profile"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

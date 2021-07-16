@@ -22,9 +22,10 @@
         android:layout_marginTop="25dp"
         android:layout_below="@+id/tvPleaseLogin"
         android:layout_width="match_parent"
+        android:inputType="textEmailAddress"
         android:layout_height="wrap_content"
-        android:hint="Username"
-        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:hint="Email"
+        android:drawableStart="@drawable/ic_email"
         android:drawablePadding="10dp"
         tools:ignore="RtlCompat" />
 

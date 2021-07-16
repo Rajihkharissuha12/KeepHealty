@@ -1,21 +1,24 @@
 package com.example.keephealty.api;
 
+import com.example.keephealty.model.mitra.Mitra;
+import com.example.keephealty.model.mitra.MitraData;
 import com.example.keephealty.model.login.Login;
 import com.example.keephealty.model.register.Register;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
 
-   @FormUrlEncoded
+    @FormUrlEncoded
     @POST("login.php")
     Call<Login> loginResponse(
-            @Field("name") String name,
+            @Field("email") String email,
             @Field("password") String password
-   );
+    );
 
     @FormUrlEncoded
     @POST("register.php")
@@ -25,7 +28,9 @@ public interface ApiInterface {
             @Field("email") String email,
             @Field("alamat") String alamat,
             @Field("nomor") String nomor
-
     );
+
+    @GET("get-mitra")
+    Call<Mitra> getMitra();
 
 }

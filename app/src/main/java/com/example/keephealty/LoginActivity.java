@@ -10,20 +10,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.keephealty.api.ApiClient;
 import com.example.keephealty.api.ApiInterface;
 import com.example.keephealty.model.login.Login;
 import com.example.keephealty.model.login.LoginData;
-import com.ifa.keephealty.api.ApiClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText etname, etpassword;
     Button btnLogin;
-    String name, password;
+    String email, password;
     TextView tvRegister;
     ApiInterface apiInterface;
     SessionManager sessionManager;
@@ -45,11 +45,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnLogin:
-                name = etname.getText().toString();
+                email = etname.getText().toString();
                 password = etpassword.getText().toString();
-                login(name,password);
+                login(email, password);
                 break;
             case R.id.tvCreateAccount:
                 Intent intent = new Intent(this, RegisterActivity.class);
@@ -58,19 +58,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void login(String name, String Password) {
+    private void login(String email, String Password) {
+
+        if (email.trim().isEmpty() || password.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Isi semua field!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<Login> loginCall = apiInterface.loginResponse(name,Password);
+        Call<Login> loginCall = apiInterface.loginResponse(email, Password);
         loginCall.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
-                if (response.body() != null && response.isSuccessful() && response.body().isStatus()){
+                if (response.body() != null && response.isSuccessful() && response.body().isStatus()) {
 
                     sessionManager = new SessionManager(LoginActivity.this);
                     LoginData loginData = response.body().getData();
                     sessionManager.createLoginSession(loginData);
-
 
                     Toast.makeText(LoginActivity.this, response.body().getData().getName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -83,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, t.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
