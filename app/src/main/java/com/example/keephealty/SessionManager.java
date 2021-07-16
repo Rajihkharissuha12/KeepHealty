@@ -31,7 +31,7 @@ public class SessionManager {
 
     public void createLoginSession(LoginData user) {
         editor.putBoolean(IS_LOGGED_IN, true);
-        editor.putInt(USER_ID, user.getUserId());
+        editor.putString(USER_ID, user.getUserId());
         editor.putString(NAME, user.getName());
         editor.putString(EMAIL, user.getEmail());
         editor.putString(ALAMAT, user.getAlamat());
