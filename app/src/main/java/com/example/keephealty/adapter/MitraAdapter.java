@@ -25,7 +25,7 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.MitraViewHol
 
     private List<MitraData> mitraList, mitraListFull;
     private Context context;
-    private final String BASE_URL = "http://192.168.43.135/";
+    private final String BASE_URL = "http://192.168.43.201/";
 
     public MitraAdapter(List<MitraData> mitraList, Context context) {
         this.mitraList = mitraList;
