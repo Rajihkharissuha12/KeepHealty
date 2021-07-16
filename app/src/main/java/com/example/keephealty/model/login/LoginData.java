@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class LoginData {
 
 	@SerializedName("user_id")
-	private String userId;
+	private Integer userId;
 
 	@SerializedName("name")
 	private String name;
@@ -23,7 +23,7 @@ public class LoginData {
 		this.userId = userId;
 	}
 
-	public String getUserId(){
+	public Integer getUserId(){
 		return userId;
 	}
 

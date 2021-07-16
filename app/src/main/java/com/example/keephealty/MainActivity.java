@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_mitra);
 
         sessionManager = new SessionManager(MainActivity.this);
-        if (!sessionManager.isLoggedIn()) {
+        if (!sessionManager.isLoggedIn() == true) {
             moveToLogin();
         }
 
@@ -75,16 +75,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.actionLogout:
-                sessionManager.logoutSession();
-                moveToLogin();
-        }
-        return super.onOptionsItemSelected(item);
+
     }
 
     private void moveToLogin() {
