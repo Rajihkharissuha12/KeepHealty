@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.keephealty.R;
-import com.example.keephealty.model.mitra.Mitra;
 import com.example.keephealty.model.mitra.MitraData;
 
 import java.util.ArrayList;

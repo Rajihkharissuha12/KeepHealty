@@ -1,8 +1,7 @@
 package com.example.keephealty.api;
 
-import com.example.keephealty.model.mitra.Mitra;
-import com.example.keephealty.model.mitra.MitraData;
 import com.example.keephealty.model.login.Login;
+import com.example.keephealty.model.mitra.Mitra;
 import com.example.keephealty.model.register.Register;
 
 import retrofit2.Call;
