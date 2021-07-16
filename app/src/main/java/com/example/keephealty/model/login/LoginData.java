@@ -10,6 +10,15 @@ public class LoginData {
 	@SerializedName("name")
 	private String name;
 
+	@SerializedName("email")
+	private String email;
+
+	@SerializedName("alamat")
+	private String alamat;
+
+	@SerializedName("nomor")
+	private String nomor;
+
 	public void setUserId(String userId){
 		this.userId = userId;
 	}
@@ -24,5 +33,29 @@ public class LoginData {
 
 	public String getName(){
 		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAlamat() {
+		return alamat;
+	}
+
+	public void setAlamat(String alamat) {
+		this.alamat = alamat;
+	}
+
+	public String getNomor() {
+		return nomor;
+	}
+
+	public void setNomor(String nomor) {
+		this.nomor = nomor;
 	}
 }
